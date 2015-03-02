@@ -60,6 +60,11 @@ u_charType(UChar32 c) {
     return (int8_t)GET_CATEGORY(props);
 }
 
+U_CAPI int8_t U_EXPORT2
+u_charType_44(UChar32 c) {
+    return u_charType(c);
+}
+
 /* Enumerate all code points with their general categories. */
 struct _EnumTypeCallback {
     UCharEnumTypeRange *enumRange;
@@ -161,6 +166,11 @@ u_isalnum(UChar32 c) {
     return (UBool)((CAT_MASK(props)&(U_GC_L_MASK|U_GC_ND_MASK))!=0);
 }
 
+U_CAPI UBool U_EXPORT2
+u_isalnum_44(UChar32 c) {
+    return u_isalnum(c);
+}
+
 /**
  * Checks if c is alphabetic, or a decimal digit; implements UCHAR_POSIX_ALNUM.
  * @internal
@@ -260,6 +270,11 @@ u_isprint(UChar32 c) {
     return (UBool)((CAT_MASK(props)&U_GC_C_MASK)==0);
 }
 
+U_CAPI UBool U_EXPORT2
+u_isprint_44(UChar32 c) {
+    return u_isprint(c);
+}
+
 /**
  * Checks if c is in \p{graph}\p{blank} - \p{cntrl}.
  * Implements UCHAR_POSIX_PRINT.
@@ -309,6 +324,11 @@ u_ispunct(UChar32 c) {
     uint32_t props;
     GET_PROPS(c, props);
     return (UBool)((CAT_MASK(props)&U_GC_P_MASK)!=0);
+}
+
+U_CAPI UBool U_EXPORT2
+u_ispunct_44(UChar32 c) {
+    return u_ispunct(c);
 }
 
 /* Checks if the Unicode character can start a Unicode identifier.*/

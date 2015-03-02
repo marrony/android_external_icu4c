@@ -32,6 +32,13 @@
 if you don't use ucnv_cbXXX functions.  Make sure you don't use the same callback within
 the same call stack if the complexity arises. */
 U_CAPI void  U_EXPORT2
+ucnv_cbFromUWriteBytes_44 (UConverterFromUnicodeArgs *args,
+                       const char* source,
+                       int32_t length,
+                       int32_t offsetIndex,
+                       UErrorCode * err) ALIAS(ucnv_cbFromUWriteBytes);
+
+U_CAPI void  U_EXPORT2
 ucnv_cbFromUWriteBytes (UConverterFromUnicodeArgs *args,
                        const char* source,
                        int32_t length,
@@ -49,6 +56,13 @@ ucnv_cbFromUWriteBytes (UConverterFromUnicodeArgs *args,
         &args->offsets, offsetIndex,
         err);
 }
+
+U_CAPI void  U_EXPORT2
+ucnv_cbFromUWriteUChars_44(UConverterFromUnicodeArgs *args,
+                             const UChar** source,
+                             const UChar*  sourceLimit,
+                             int32_t offsetIndex,
+                             UErrorCode * err) ALIAS(ucnv_cbFromUWriteUChars);
 
 U_CAPI void  U_EXPORT2
 ucnv_cbFromUWriteUChars(UConverterFromUnicodeArgs *args,

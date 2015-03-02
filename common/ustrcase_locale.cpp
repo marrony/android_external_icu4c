@@ -96,6 +96,14 @@ u_strToLower(UChar *dest, int32_t destCapacity,
 }
 
 U_CAPI int32_t U_EXPORT2
+u_strToLower_44(UChar *dest, int32_t destCapacity,
+             const UChar *src, int32_t srcLength,
+             const char *locale,
+             UErrorCode *pErrorCode) {
+    return u_strToLower(dest, destCapacity, src, srcLength, locale, pErrorCode);
+}
+
+U_CAPI int32_t U_EXPORT2
 u_strToUpper(UChar *dest, int32_t destCapacity,
              const UChar *src, int32_t srcLength,
              const char *locale,
@@ -108,3 +116,12 @@ u_strToUpper(UChar *dest, int32_t destCapacity,
         src, srcLength,
         ustrcase_internalToUpper, pErrorCode);
 }
+
+U_CAPI int32_t U_EXPORT2
+u_strToUpper_44(UChar *dest, int32_t destCapacity,
+             const UChar *src, int32_t srcLength,
+             const char *locale,
+             UErrorCode *pErrorCode) {
+    return u_strToUpper(dest, destCapacity, src, srcLength, locale, pErrorCode);
+}
+

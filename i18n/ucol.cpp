@@ -6749,12 +6749,19 @@ ucol_getAttribute(const UCollator *coll, UColAttribute attr, UErrorCode *status)
 }
 
 U_CAPI void U_EXPORT2
+ucol_setStrength_44(    UCollator                *coll,
+            UCollationStrength        strength) ALIAS(ucol_setStrength);
+
+U_CAPI void U_EXPORT2
 ucol_setStrength(    UCollator                *coll,
             UCollationStrength        strength)
 {
     UErrorCode status = U_ZERO_ERROR;
     ucol_setAttribute(coll, UCOL_STRENGTH, strength, &status);
 }
+
+U_CAPI UCollationStrength U_EXPORT2
+ucol_getStrength_44(const UCollator *coll) ALIAS(ucol_getStrength);
 
 U_CAPI UCollationStrength U_EXPORT2
 ucol_getStrength(const UCollator *coll)

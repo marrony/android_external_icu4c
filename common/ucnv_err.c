@@ -52,6 +52,17 @@
 
 /*Function Pointer STOPS at the ILLEGAL_SEQUENCE */
 U_CAPI void    U_EXPORT2
+UCNV_FROM_U_CALLBACK_STOP_44 (
+                  const void *context,
+                  UConverterFromUnicodeArgs *fromUArgs,
+                  const UChar* codeUnits,
+                  int32_t length,
+                  UChar32 codePoint,
+                  UConverterCallbackReason reason,
+                  UErrorCode * err)
+   __attribute__ ((weak, alias ("UCNV_FROM_U_CALLBACK_STOP_51")));
+
+U_CAPI void    U_EXPORT2
 UCNV_FROM_U_CALLBACK_STOP (
                   const void *context,
                   UConverterFromUnicodeArgs *fromUArgs,
@@ -67,6 +78,16 @@ UCNV_FROM_U_CALLBACK_STOP (
 
 
 /*Function Pointer STOPS at the ILLEGAL_SEQUENCE */
+U_CAPI void    U_EXPORT2
+UCNV_TO_U_CALLBACK_STOP_44 (
+                   const void *context,
+                   UConverterToUnicodeArgs *toUArgs,
+                   const char* codePoints,
+                   int32_t length,
+                   UConverterCallbackReason reason,
+                   UErrorCode * err)
+   __attribute__ ((alias("UCNV_TO_U_CALLBACK_STOP_51")));
+
 U_CAPI void    U_EXPORT2
 UCNV_TO_U_CALLBACK_STOP (
                    const void *context,
@@ -102,6 +123,17 @@ UCNV_FROM_U_CALLBACK_SKIP (
 }
 
 U_CAPI void    U_EXPORT2
+UCNV_FROM_U_CALLBACK_SUBSTITUTE_44 (
+                  const void *context,
+                  UConverterFromUnicodeArgs *fromArgs,
+                  const UChar* codeUnits,
+                  int32_t length,
+                  UChar32 codePoint,
+                  UConverterCallbackReason reason,
+                  UErrorCode * err)
+    __attribute__ ((alias ("UCNV_FROM_U_CALLBACK_SUBSTITUTE_51")));
+
+U_CAPI void    U_EXPORT2
 UCNV_FROM_U_CALLBACK_SUBSTITUTE (
                   const void *context,
                   UConverterFromUnicodeArgs *fromArgs,
@@ -128,6 +160,18 @@ UCNV_FROM_U_CALLBACK_SUBSTITUTE (
  *escape sequence to the target codepage (if conversion failure happens then
  *we revert to substituting with subchar)
  */
+
+U_CAPI void    U_EXPORT2
+UCNV_FROM_U_CALLBACK_ESCAPE_44 (
+                         const void *context,
+                         UConverterFromUnicodeArgs *fromArgs,
+                         const UChar *codeUnits,
+                         int32_t length,
+                         UChar32 codePoint,
+                         UConverterCallbackReason reason,
+                         UErrorCode * err)
+   __attribute__ ((alias ("UCNV_FROM_U_CALLBACK_ESCAPE_51")));
+
 U_CAPI void    U_EXPORT2
 UCNV_FROM_U_CALLBACK_ESCAPE (
                          const void *context,
@@ -303,6 +347,16 @@ UCNV_TO_U_CALLBACK_SKIP (
     }
     /* else ignore the reset, close and clone calls. */
 }
+
+U_CAPI void    U_EXPORT2
+UCNV_TO_U_CALLBACK_SUBSTITUTE_44 (
+                 const void *context,
+                 UConverterToUnicodeArgs *toArgs,
+                 const char* codeUnits,
+                 int32_t length,
+                 UConverterCallbackReason reason,
+                 UErrorCode * err)
+   __attribute__ ((alias("UCNV_TO_U_CALLBACK_SUBSTITUTE_51")));
 
 U_CAPI void    U_EXPORT2
 UCNV_TO_U_CALLBACK_SUBSTITUTE (

@@ -468,6 +468,11 @@ u_getIntPropertyValue(UChar32 c, UProperty which) {
 }
 
 U_CAPI int32_t U_EXPORT2
+u_getIntPropertyValue_44(UChar32 c, UProperty which) {
+    return u_getIntPropertyValue(c, which);
+}
+
+U_CAPI int32_t U_EXPORT2
 u_getIntPropertyMinValue(UProperty /*which*/) {
     return 0; /* all binary/enum/int properties have a minimum value of 0 */
 }

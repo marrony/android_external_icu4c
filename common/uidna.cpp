@@ -664,6 +664,15 @@ uidna_toUnicode(const UChar* src, int32_t srcLength,
     return retLen;
 }
 
+U_CAPI int32_t U_EXPORT2
+uidna_IDNToASCII_44(  const UChar *src, int32_t srcLength,
+                   UChar* dest, int32_t destCapacity,
+                   int32_t options,
+                   UParseError *parseError,
+                   UErrorCode *status){
+    return uidna_IDNToASCII(src, srcLength, dest, destCapacity, options,
+         parseError, status);
+}
 
 U_CAPI int32_t U_EXPORT2
 uidna_IDNToASCII(  const UChar *src, int32_t srcLength,

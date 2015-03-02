@@ -209,6 +209,10 @@ u_charDirection(UChar32 c) {
     return ubidi_getClass(&ubidi_props_singleton, c);
 }
 
+U_STABLE UCharDirection U_EXPORT2 u_charDirection_44(UChar32 c) {
+    return u_charDirection(c);
+}
+
 U_CFUNC UBool
 u_isMirrored(UChar32 c) {
     return ubidi_isMirrored(&ubidi_props_singleton, c);
@@ -218,3 +222,9 @@ U_CFUNC UChar32
 u_charMirror(UChar32 c) {
     return ubidi_getMirror(&ubidi_props_singleton, c);
 }
+
+U_CAPI UChar32 U_EXPORT2
+u_charMirror_44(UChar32 c) {
+    return u_charMirror(c);
+}
+

@@ -966,6 +966,11 @@ ucnv_getStandard(uint16_t n, UErrorCode *pErrorCode) {
 }
 
 U_CAPI const char * U_EXPORT2
+ucnv_getStandardName_44(const char *alias, const char *standard, UErrorCode *pErrorCode) {
+    return ucnv_getStandardName(alias, standard, pErrorCode);
+}
+
+U_CAPI const char * U_EXPORT2
 ucnv_getStandardName(const char *alias, const char *standard, UErrorCode *pErrorCode) {
     if (haveAliasData(pErrorCode) && isAlias(alias, pErrorCode)) {
         uint32_t listOffset = findTaggedAliasListsOffset(alias, standard, pErrorCode);
@@ -986,11 +991,19 @@ ucnv_getStandardName(const char *alias, const char *standard, UErrorCode *pError
 }
 
 U_CAPI uint16_t U_EXPORT2
+ucnv_countAliases_44(const char *alias, UErrorCode *pErrorCode) {
+    return ucnv_countAliases(alias, pErrorCode);
+}
+
+U_CAPI uint16_t U_EXPORT2
 ucnv_countAliases(const char *alias, UErrorCode *pErrorCode)
 {
     return ucnv_io_countAliases(alias, pErrorCode);
 }
 
+
+U_CAPI const char* U_EXPORT2
+ucnv_getAlias_44(const char *alias, uint16_t n, UErrorCode *pErrorCode) ALIAS(ucnv_getAlias);
 
 U_CAPI const char* U_EXPORT2
 ucnv_getAlias(const char *alias, uint16_t n, UErrorCode *pErrorCode)

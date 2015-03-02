@@ -66,6 +66,10 @@ static const UAmbiguousConverter ambiguousConverters[]={
 
 /*Calls through createConverter */
 U_CAPI UConverter* U_EXPORT2
+ucnv_open_44 (const char *name,
+                       UErrorCode * err) ALIAS(ucnv_open);
+
+U_CAPI UConverter* U_EXPORT2
 ucnv_open (const char *name,
                        UErrorCode * err)
 {
@@ -318,6 +322,9 @@ ucnv_safeClone(const UConverter* cnv, void *stackBuffer, int32_t *pBufferSize, U
  *and frees the mutable part*/
 
 U_CAPI void  U_EXPORT2
+ucnv_close_44 (UConverter * converter) ALIAS(ucnv_close);
+
+U_CAPI void  U_EXPORT2
 ucnv_close (UConverter * converter)
 {
     UErrorCode errorCode = U_ZERO_ERROR;
@@ -396,6 +403,9 @@ ucnv_close (UConverter * converter)
 /*returns a single Name from the list, will return NULL if out of bounds
  */
 U_CAPI const char*   U_EXPORT2
+ucnv_getAvailableName_44 (int32_t n) ALIAS(ucnv_getAvailableName);
+
+U_CAPI const char*   U_EXPORT2
 ucnv_getAvailableName (int32_t n)
 {
     if (0 <= n && n <= 0xffff) {
@@ -406,6 +416,11 @@ ucnv_getAvailableName (int32_t n)
         }
     }
     return NULL;
+}
+
+U_CAPI int32_t   U_EXPORT2
+ucnv_countAvailable_44 () {
+    return ucnv_countAvailable();
 }
 
 U_CAPI int32_t   U_EXPORT2
@@ -439,6 +454,12 @@ ucnv_getSubstChars (const UConverter * converter,
     uprv_memcpy (mySubChar, converter->subChars, converter->subCharLen);   /*fills in the subchars */
     *len = converter->subCharLen; /*store # of bytes copied to buffer */
 }
+
+U_CAPI void    U_EXPORT2
+ucnv_setSubstChars_44 (UConverter * converter,
+                    const char *mySubChar,
+                    int8_t len,
+                    UErrorCode * err) ALIAS(ucnv_setSubstChars);
 
 U_CAPI void    U_EXPORT2
 ucnv_setSubstChars (UConverter * converter,
@@ -656,6 +677,9 @@ ucnv_getMinCharSize (const UConverter * converter)
 }
 
 U_CAPI const char*   U_EXPORT2
+ucnv_getName_44 (const UConverter * converter, UErrorCode * err) ALIAS(ucnv_getName);
+
+U_CAPI const char*   U_EXPORT2
 ucnv_getName (const UConverter * converter, UErrorCode * err)
      
 {
@@ -722,6 +746,14 @@ U_CAPI void U_EXPORT2
 }
 
 U_CAPI void    U_EXPORT2
+ucnv_setToUCallBack_44 (UConverter * converter,
+                            UConverterToUCallback newAction,
+                            const void* newContext,
+                            UConverterToUCallback *oldAction,
+                            const void** oldContext,
+                            UErrorCode * err) ALIAS(ucnv_setToUCallBack);
+
+U_CAPI void    U_EXPORT2
 ucnv_setToUCallBack (UConverter * converter,
                             UConverterToUCallback newAction,
                             const void* newContext,
@@ -736,6 +768,14 @@ ucnv_setToUCallBack (UConverter * converter,
     if (oldContext) *oldContext = converter->toUContext;
     converter->toUContext = newContext;
 }
+
+U_CAPI void  U_EXPORT2
+ucnv_setFromUCallBack_44 (UConverter * converter,
+                            UConverterFromUCallback newAction,
+                            const void* newContext,
+                            UConverterFromUCallback *oldAction,
+                            const void** oldContext,
+                            UErrorCode * err) ALIAS(ucnv_setFromUCallBack);
 
 U_CAPI void  U_EXPORT2
 ucnv_setFromUCallBack (UConverter * converter,
@@ -1165,6 +1205,14 @@ ucnv_outputOverflowFromUnicode(UConverter *cnv,
     }
     return FALSE;
 }
+
+U_CAPI void U_EXPORT2
+ucnv_fromUnicode_44(UConverter *cnv,
+                 char **target, const char *targetLimit,
+                 const UChar **source, const UChar *sourceLimit,
+                 int32_t *offsets,
+                 UBool flush,
+                 UErrorCode *err) ALIAS(ucnv_fromUnicode);
 
 U_CAPI void U_EXPORT2
 ucnv_fromUnicode(UConverter *cnv,
@@ -1613,6 +1661,14 @@ ucnv_outputOverflowToUnicode(UConverter *cnv,
 }
 
 U_CAPI void U_EXPORT2
+ucnv_toUnicode_44(UConverter *cnv,
+               UChar **target, const UChar *targetLimit,
+               const char **source, const char *sourceLimit,
+               int32_t *offsets,
+               UBool flush,
+               UErrorCode *err) ALIAS(ucnv_toUnicode);
+
+U_CAPI void U_EXPORT2
 ucnv_toUnicode(UConverter *cnv,
                UChar **target, const UChar *targetLimit,
                const char **source, const char *sourceLimit,
@@ -2041,6 +2097,14 @@ ucnv_getNextUChar(UConverter *cnv,
 }
 
 /* ucnv_convert() and siblings ---------------------------------------------- */
+U_CAPI void U_EXPORT2
+ucnv_convertEx_44(UConverter *targetCnv, UConverter *sourceCnv,
+               char **target, const char *targetLimit,
+               const char **source, const char *sourceLimit,
+               UChar *pivotStart, UChar **pivotSource,
+               UChar **pivotTarget, const UChar *pivotLimit,
+               UBool reset, UBool flush,
+               UErrorCode *pErrorCode) ALIAS(ucnv_convertEx);
 
 U_CAPI void U_EXPORT2
 ucnv_convertEx(UConverter *targetCnv, UConverter *sourceCnv,
@@ -2684,6 +2748,9 @@ U_CAPI UBool  U_EXPORT2
 ucnv_isAmbiguous(const UConverter *cnv) {
     return (UBool)(ucnv_getAmbiguous(cnv)!=NULL);
 }
+
+U_CAPI void  U_EXPORT2
+ucnv_setFallback_44(UConverter *cnv, UBool usesFallback) ALIAS(ucnv_setFallback);
 
 U_CAPI void  U_EXPORT2
 ucnv_setFallback(UConverter *cnv, UBool usesFallback)

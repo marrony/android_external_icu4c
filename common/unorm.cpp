@@ -44,6 +44,14 @@ U_NAMESPACE_USE
 /* quick check functions ---------------------------------------------------- */
 
 U_CAPI UNormalizationCheckResult U_EXPORT2
+unorm_quickCheck_44(const UChar *src,
+                 int32_t srcLength, 
+                 UNormalizationMode mode,
+                 UErrorCode *pErrorCode) {
+    return unorm_quickCheck(src, srcLength, mode, pErrorCode);
+}
+
+U_CAPI UNormalizationCheckResult U_EXPORT2
 unorm_quickCheck(const UChar *src,
                  int32_t srcLength, 
                  UNormalizationMode mode,
@@ -93,6 +101,15 @@ unorm_isNormalizedWithOptions(const UChar *src, int32_t srcLength,
 /* normalize() API ---------------------------------------------------------- */
 
 /** Public API for normalizing. */
+U_CAPI int32_t U_EXPORT2
+unorm_normalize_44(const UChar *src, int32_t srcLength,
+                UNormalizationMode mode, int32_t options,
+                UChar *dest, int32_t destCapacity,
+                UErrorCode *pErrorCode) {
+    return unorm_normalize(src, srcLength, mode, options, dest,
+        destCapacity, pErrorCode);
+}
+
 U_CAPI int32_t U_EXPORT2
 unorm_normalize(const UChar *src, int32_t srcLength,
                 UNormalizationMode mode, int32_t options,

@@ -976,6 +976,11 @@ u_getCombiningClass(UChar32 c) {
     }
 }
 
+U_CAPI uint8_t U_EXPORT2
+u_getCombiningClass_44(UChar32 c) {
+    return u_getCombiningClass(c);
+}
+
 U_CFUNC UNormalizationCheckResult
 unorm_getQuickCheck(UChar32 c, UNormalizationMode mode) {
     if(mode<=UNORM_NONE || UNORM_FCD<=mode) {

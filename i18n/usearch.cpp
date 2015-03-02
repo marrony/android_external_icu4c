@@ -2599,6 +2599,17 @@ inline UBool checkPreviousCanonicalMatch(UStringSearch *strsrch,
 
 // constructors and destructor -------------------------------------------
 
+U_CAPI UStringSearch * U_EXPORT2 usearch_open_44(const UChar *pattern,
+                                          int32_t         patternlength,
+                                    const UChar          *text,
+                                          int32_t         textlength,
+                                    const char           *locale,
+                                          UBreakIterator *breakiter,
+                                          UErrorCode     *status) {
+    return usearch_open(pattern, patternlength, text, textlength, locale,
+       breakiter, status);
+}
+
 U_CAPI UStringSearch * U_EXPORT2 usearch_open(const UChar *pattern,
                                           int32_t         patternlength,
                                     const UChar          *text,
@@ -2923,6 +2934,11 @@ U_CAPI int32_t U_EXPORT2 usearch_getMatchedText(const UStringSearch *strsrch,
                              strsrch->search->matchedLength, status);
 }
 
+U_CAPI int32_t U_EXPORT2 usearch_getMatchedLength_44(
+                                              const UStringSearch *strsrch) {
+    return usearch_getMatchedLength(strsrch);
+}
+
 U_CAPI int32_t U_EXPORT2 usearch_getMatchedLength(
                                               const UStringSearch *strsrch)
 {
@@ -2957,6 +2973,13 @@ usearch_getBreakIterator(const UStringSearch *strsrch)
 }
 
 #endif
+
+U_CAPI void U_EXPORT2 usearch_setText_44(      UStringSearch *strsrch,
+                                      const UChar         *text,
+                                            int32_t        textlength,
+                                            UErrorCode    *status) {
+    usearch_setText(strsrch, text, textlength, status);
+}
 
 U_CAPI void U_EXPORT2 usearch_setText(      UStringSearch *strsrch,
                                       const UChar         *text,
@@ -3052,12 +3075,23 @@ U_CAPI void U_EXPORT2 usearch_setCollator(      UStringSearch *strsrch,
     }
 }
 
+U_CAPI UCollator * U_EXPORT2 usearch_getCollator_44(const UStringSearch *strsrch) {
+    return usearch_getCollator(strsrch);
+}
+
 U_CAPI UCollator * U_EXPORT2 usearch_getCollator(const UStringSearch *strsrch)
 {
     if (strsrch) {
         return (UCollator *)strsrch->collator;
     }
     return NULL;
+}
+
+U_CAPI void U_EXPORT2 usearch_setPattern_44(      UStringSearch *strsrch,
+                                         const UChar         *pattern,
+                                               int32_t        patternlength,
+                                               UErrorCode    *status) {
+    usearch_setPattern(strsrch, pattern, patternlength, status);
 }
 
 U_CAPI void U_EXPORT2 usearch_setPattern(      UStringSearch *strsrch,
@@ -3096,6 +3130,11 @@ usearch_getPattern(const UStringSearch *strsrch,
 }
 
 // miscellanous methods --------------------------------------------------
+
+U_CAPI int32_t U_EXPORT2 usearch_first_44(UStringSearch *strsrch,
+                                           UErrorCode    *status) {
+    return usearch_first(strsrch, status);
+}
 
 U_CAPI int32_t U_EXPORT2 usearch_first(UStringSearch *strsrch,
                                            UErrorCode    *status)
@@ -3175,6 +3214,11 @@ U_CAPI int32_t U_EXPORT2 usearch_preceding(UStringSearch *strsrch,
 * iterator. Callers of this API would have to set the offset in the collation
 * element iterator before using this method.
 */
+U_CAPI int32_t U_EXPORT2 usearch_next_44(UStringSearch *strsrch,
+                                          UErrorCode    *status) {
+    return usearch_next(strsrch, status);
+}
+
 U_CAPI int32_t U_EXPORT2 usearch_next(UStringSearch *strsrch,
                                           UErrorCode    *status)
 {
@@ -3370,6 +3414,9 @@ U_CAPI int32_t U_EXPORT2 usearch_previous(UStringSearch *strsrch,
 }
 
 
+U_CAPI void U_EXPORT2 usearch_reset_44(UStringSearch *strsrch) {
+    usearch_reset(strsrch);
+}
 
 U_CAPI void U_EXPORT2 usearch_reset(UStringSearch *strsrch)
 {

@@ -115,6 +115,10 @@
 #endif
 #endif
 
+#define STRINGFY(x) #x
+#define ALIAS(x) __attribute__ ((alias(STRINGFY(x))));
+
+
 /** The current ICU library version as a dotted-decimal string. The patchlevel
  *  only appears in this string if it non-zero. 
  *  This value will change in the subsequent releases of ICU

@@ -1246,11 +1246,21 @@ U_CAPI UChar32 U_EXPORT2
 u_tolower(UChar32 c) {
     return ucase_tolower(GET_CASE_PROPS(), c);
 }
+
+U_CAPI UChar32 U_EXPORT2
+u_tolower_44(UChar32 c) {
+    return u_tolower(c);
+}
     
 /* Transforms the Unicode character to its upper case equivalent.*/
 U_CAPI UChar32 U_EXPORT2
 u_toupper(UChar32 c) {
     return ucase_toupper(GET_CASE_PROPS(), c);
+}
+
+U_CAPI UChar32 U_EXPORT2
+u_toupper_44(UChar32 c) {
+    return u_toupper(c);
 }
 
 /* Transforms the Unicode character to its title case equivalent.*/
@@ -1259,10 +1269,20 @@ u_totitle(UChar32 c) {
     return ucase_totitle(GET_CASE_PROPS(), c);
 }
 
+U_CAPI UChar32 U_EXPORT2
+u_totitle_44(UChar32 c) {
+    return u_totitle(c);
+}
+
 /* return the simple case folding mapping for c */
 U_CAPI UChar32 U_EXPORT2
 u_foldCase(UChar32 c, uint32_t options) {
     return ucase_fold(GET_CASE_PROPS(), c, options);
+}
+
+U_CAPI UChar32 U_EXPORT2
+u_foldCase_44(UChar32 c, uint32_t options) {
+   return u_foldCase(c, options);
 }
 
 U_CFUNC int32_t U_EXPORT2

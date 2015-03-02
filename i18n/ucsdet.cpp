@@ -24,6 +24,11 @@ U_NAMESPACE_USE
 U_CDECL_BEGIN
 
 U_CAPI UCharsetDetector * U_EXPORT2
+ucsdet_open_44(UErrorCode   *status) {
+    return ucsdet_open(status);
+}
+
+U_CAPI UCharsetDetector * U_EXPORT2
 ucsdet_open(UErrorCode   *status)
 {
     if(U_FAILURE(*status)) {
@@ -41,10 +46,20 @@ ucsdet_open(UErrorCode   *status)
 }
 
 U_CAPI void U_EXPORT2
+ucsdet_close_44(UCharsetDetector *ucsd) {
+   ucsdet_close(ucsd);
+}
+
+U_CAPI void U_EXPORT2
 ucsdet_close(UCharsetDetector *ucsd)
 {
     CharsetDetector *csd = (CharsetDetector *) ucsd;
     delete csd;
+}
+
+U_CAPI void U_EXPORT2
+ucsdet_setText_44(UCharsetDetector *ucsd, const char *textIn, int32_t len, UErrorCode *status) {
+    return ucsdet_setText(ucsd, textIn, len, status);
 }
 
 U_CAPI void U_EXPORT2
@@ -58,6 +73,11 @@ ucsdet_setText(UCharsetDetector *ucsd, const char *textIn, int32_t len, UErrorCo
 }
 
 U_CAPI const char * U_EXPORT2
+ucsdet_getName_44(const UCharsetMatch *ucsm, UErrorCode *status) {
+    return ucsdet_getName(ucsm, status);
+}
+
+U_CAPI const char * U_EXPORT2
 ucsdet_getName(const UCharsetMatch *ucsm, UErrorCode *status)
 {
     if(U_FAILURE(*status)) {
@@ -65,6 +85,11 @@ ucsdet_getName(const UCharsetMatch *ucsm, UErrorCode *status)
     }
 
     return ((CharsetMatch *) ucsm)->getName();
+}
+
+U_CAPI int32_t U_EXPORT2
+ucsdet_getConfidence_44(const UCharsetMatch *ucsm, UErrorCode *status) {
+    return ucsdet_getConfidence(ucsm, status);
 }
 
 U_CAPI int32_t U_EXPORT2
@@ -107,6 +132,12 @@ ucsdet_setDeclaredEncoding(UCharsetDetector *ucsd, const char *encoding, int32_t
     ((CharsetDetector *) ucsd)->setDeclaredEncoding(encoding,length);
 }
 
+U_CAPI const UCharsetMatch** U_EXPORT2
+ucsdet_detectAll_44(UCharsetDetector *ucsd,
+                 int32_t *maxMatchesFound, UErrorCode *status) {
+   return ucsdet_detectAll(ucsd, maxMatchesFound, status);
+}
+
 U_CAPI const UCharsetMatch**
 ucsdet_detectAll(UCharsetDetector *ucsd,
                  int32_t *maxMatchesFound, UErrorCode *status)
@@ -147,6 +178,11 @@ ucsdet_isInputFilterEnabled(const UCharsetDetector *ucsd)
     }
 
     return ((CharsetDetector *) ucsd)->getStripTagsFlag();
+}
+
+U_CAPI  UBool U_EXPORT2
+ucsdet_enableInputFilter_44(UCharsetDetector *ucsd, UBool filter) {
+   return ucsdet_enableInputFilter(ucsd, filter);
 }
 
 U_CAPI  UBool U_EXPORT2

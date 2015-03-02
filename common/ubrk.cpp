@@ -28,6 +28,13 @@ U_NAMESPACE_USE
 //
 //------------------------------------------------------------------------------
 U_CAPI UBreakIterator* U_EXPORT2
+ubrk_open_44(UBreakIteratorType type,
+      const char *locale,
+      const UChar *text,
+      int32_t textLength,
+      UErrorCode *status) ALIAS(ubrk_open);
+
+U_CAPI UBreakIterator* U_EXPORT2
 ubrk_open(UBreakIteratorType type,
       const char *locale,
       const UChar *text,
@@ -90,6 +97,14 @@ ubrk_open(UBreakIteratorType type,
 //                       Invokes the rule builder.
 //
 //------------------------------------------------------------------------------
+U_CAPI UBreakIterator* U_EXPORT2
+ubrk_openRules_44(  const UChar        *rules,
+                       int32_t       rulesLength,
+                 const UChar        *text,
+                       int32_t       textLength,
+                       UParseError  *parseErr,
+                       UErrorCode   *status) ALIAS(ubrk_openRules);
+
 U_CAPI UBreakIterator* U_EXPORT2
 ubrk_openRules(  const UChar        *rules,
                        int32_t       rulesLength,
@@ -161,6 +176,12 @@ ubrk_close(UBreakIterator *bi)
 }
 
 U_CAPI void U_EXPORT2
+ubrk_setText_44(UBreakIterator* bi,
+             const UChar*    text,
+             int32_t         textLength,
+             UErrorCode*     status) ALIAS(ubrk_setText);
+
+U_CAPI void U_EXPORT2
 ubrk_setText(UBreakIterator* bi,
              const UChar*    text,
              int32_t         textLength,
@@ -188,6 +209,8 @@ ubrk_setUText(UBreakIterator *bi,
 
 
 
+U_CAPI int32_t U_EXPORT2
+ubrk_current_44(const UBreakIterator *bi) ALIAS(ubrk_current);
 
 U_CAPI int32_t U_EXPORT2
 ubrk_current(const UBreakIterator *bi)
@@ -197,11 +220,17 @@ ubrk_current(const UBreakIterator *bi)
 }
 
 U_CAPI int32_t U_EXPORT2
+ubrk_next_44(UBreakIterator *bi) ALIAS(ubrk_next);
+
+U_CAPI int32_t U_EXPORT2
 ubrk_next(UBreakIterator *bi)
 {
 
   return ((RuleBasedBreakIterator*)bi)->RuleBasedBreakIterator::next();
 }
+
+U_CAPI int32_t U_EXPORT2
+ubrk_previous_44(UBreakIterator *bi) ALIAS(ubrk_previous);
 
 U_CAPI int32_t U_EXPORT2
 ubrk_previous(UBreakIterator *bi)
@@ -211,11 +240,17 @@ ubrk_previous(UBreakIterator *bi)
 }
 
 U_CAPI int32_t U_EXPORT2
+ubrk_first_44(UBreakIterator *bi) ALIAS(ubrk_first);
+
+U_CAPI int32_t U_EXPORT2
 ubrk_first(UBreakIterator *bi)
 {
 
   return ((RuleBasedBreakIterator*)bi)->RuleBasedBreakIterator::first();
 }
+
+U_CAPI int32_t U_EXPORT2
+ubrk_last_44(UBreakIterator *bi) ALIAS(ubrk_last);
 
 U_CAPI int32_t U_EXPORT2
 ubrk_last(UBreakIterator *bi)
@@ -225,12 +260,20 @@ ubrk_last(UBreakIterator *bi)
 }
 
 U_CAPI int32_t U_EXPORT2
+ubrk_preceding_44(UBreakIterator *bi,
+           int32_t offset) ALIAS(ubrk_preceding);
+
+U_CAPI int32_t U_EXPORT2
 ubrk_preceding(UBreakIterator *bi,
            int32_t offset)
 {
 
   return ((RuleBasedBreakIterator*)bi)->RuleBasedBreakIterator::preceding(offset);
 }
+
+U_CAPI int32_t U_EXPORT2
+ubrk_following_44(UBreakIterator *bi,
+           int32_t offset) ALIAS(ubrk_following);
 
 U_CAPI int32_t U_EXPORT2
 ubrk_following(UBreakIterator *bi,
@@ -254,6 +297,10 @@ ubrk_countAvailable()
   return uloc_countAvailable();
 }
 
+U_CAPI  UBool U_EXPORT2
+ubrk_isBoundary_44(UBreakIterator *bi, int32_t offset) {
+    return ubrk_isBoundary(bi, offset);
+}
 
 U_CAPI  UBool U_EXPORT2
 ubrk_isBoundary(UBreakIterator *bi, int32_t offset)

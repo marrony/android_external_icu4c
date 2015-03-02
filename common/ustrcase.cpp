@@ -448,6 +448,14 @@ u_strFoldCase(UChar *dest, int32_t destCapacity,
         ustrcase_internalFold, pErrorCode);
 }
 
+U_CAPI int32_t U_EXPORT2
+u_strFoldCase_44(UChar *dest, int32_t destCapacity,
+              const UChar *src, int32_t srcLength,
+              uint32_t options,
+              UErrorCode *pErrorCode) {
+    return u_strFoldCase(dest, destCapacity, src, srcLength, options, pErrorCode);
+}
+
 /* case-insensitive string comparisons -------------------------------------- */
 
 /*
@@ -797,6 +805,11 @@ u_memcasecmp(const UChar *s1, const UChar *s2, int32_t length, uint32_t options)
     return u_strcmpFold(s1, length, s2, length,
                         options|U_COMPARE_IGNORE_CASE,
                         &errorCode);
+}
+
+U_CAPI int32_t U_EXPORT2
+u_memcasecmp_44(const UChar *s1, const UChar *s2, int32_t length, uint32_t options) {
+    return u_memcasecmp(s1, s2, length, options);
 }
 
 U_CAPI int32_t U_EXPORT2
